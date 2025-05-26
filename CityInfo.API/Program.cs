@@ -6,7 +6,8 @@ builder.Services.AddControllers(options =>
 {
     // JSON serileştirme ayarları
     options.ReturnHttpNotAcceptable = true; // Acceptable olmayan formatlarda 406 döner
-}).AddXmlDataContractSerializerFormatters(); // XML serileştirme desteği ekler
+}).AddNewtonsoftJson()
+.AddXmlDataContractSerializerFormatters(); // XML serileştirme desteği ekler
 
 
 // OpenAPI desteği için:
