@@ -8,6 +8,3 @@ namespace CityInfo.API.DbContexts
         public DbSet<PointOfInterest> PointsOfInterest { get; set; } = null!;
     }
 }
-
-git config --global user.email "oelmas@gmail.com"
-  git config --global user.name "Öner Elmas"

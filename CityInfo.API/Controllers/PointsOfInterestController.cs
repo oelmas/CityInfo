@@ -7,12 +7,21 @@ namespace CityInfo.API.Controllers
   [Route("api/cities/{cityId}/pointsofinterest")] // It is a child resource of an other resource (city) so we need to add the cityId to the route
   public class PointsOfInterestController : ControllerBase // It is a child resource of an other resource (city)
   {
+
+    private readonly ILogger<PointsOfInterestController> _logger;
+
+    public PointsOfInterestController(ILogger<PointsOfInterestController> logger)
+    {
+      _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
+
     [HttpGet]
     public ActionResult<IEnumerable<PointOfInterestDto>> GetPointsOfInterest(int cityId)
     {
       var city = CitiesDataStore.Current.Cities.FirstOrDefault(c => c.Id == cityId);
       if (city == null)
       {
+        _logger.LogInformation($"City with id {cityId} wasn't found when accessing points of interest");
 
         return NotFound();
       }
