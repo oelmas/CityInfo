@@ -14,6 +14,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
+// TODO: Mailservice ve Logger service eklenecek.
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
