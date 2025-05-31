@@ -5,10 +5,6 @@ builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
 
-
-
-
-
 // Add services to the container.
 
 builder.Services.AddControllers(options =>
@@ -18,7 +14,7 @@ builder.Services.AddControllers(options =>
 }).AddNewtonsoftJson()
 .AddXmlDataContractSerializerFormatters(); // XML serileştirme desteği ekler
 
-
+builder.Services.AddProblemDetails();
 // OpenAPI desteği için:
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,6 +24,12 @@ builder.Services.AddSwaggerGen();
 
 
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/error");
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
