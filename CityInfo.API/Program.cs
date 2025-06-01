@@ -36,6 +36,15 @@ builder.Services.AddTransient<IMailService, CloudMailService>();
 
 builder.Services.AddSingleton<CitiesDataStore>();
 
+// Detected a TLS handshake to an endpoint that does not have TLS enabled.
+// Microsoft.AspNetCore.Server.Kestrel.Core.BadHttpRequestException: Detected a TLS handshake to an endpoint that does not have TLS enabled.
+// Kestrel'in HTTPS'i desteklememesi için bu kodu ekledik.
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(7101); // HTTP
+    options.ListenAnyIP(7100, listenOptions => listenOptions.UseHttps()); // HTTPS
+});
 
 var app = builder.Build();
 
