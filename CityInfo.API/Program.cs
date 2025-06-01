@@ -1,9 +1,19 @@
+using CityInfo.API;
+using CityInfo.API.Services;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/cityinfo.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Logging.ClearProviders();
+// builder.Logging.ClearProviders();
+// builder.Logging.AddConsole();
 
-builder.Logging.AddConsole();
-
+builder.Host.UseSerilog();
 
 // Add services to the container.
 
@@ -15,12 +25,16 @@ builder.Services.AddControllers(options =>
 .AddXmlDataContractSerializerFormatters(); // XML serileştirme desteği ekler
 
 builder.Services.AddProblemDetails();
-// OpenAPI desteği için:
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 
-// TODO: Mailservice ve Logger service eklenecek.
+#if DEBUG
+builder.Services.AddTransient<IMailService, LocalMailService>();
+#else
+builder.Services.AddTransient<IMailService, CloudMailService>();
+#endif
+
+builder.Services.AddSingleton<CitiesDataStore>();
 
 
 var app = builder.Build();

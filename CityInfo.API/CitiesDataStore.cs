@@ -6,7 +6,7 @@ namespace CityInfo.API
   {
     public List<CityDto> Cities { get; set; }
 
-    public static CitiesDataStore Current { get; } = new CitiesDataStore();
+    // public static CitiesDataStore Current { get; } = new CitiesDataStore();
 
     public CitiesDataStore()
     {
@@ -43,6 +43,7 @@ namespace CityInfo.API
           {
             new PointOfInterestDto { Id = 5, Name = "Eiffel Tower", Description = "The most famous tower in the world." },
             new PointOfInterestDto { Id = 6, Name = "Louvre Museum", Description = "World's largest art museum." }
+
           }
         },
         new CityDto
@@ -104,4 +105,3 @@ namespace CityInfo.API
     }
   }
 }
-
