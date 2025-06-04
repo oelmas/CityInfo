@@ -45,6 +45,8 @@ builder.Services.AddDbContext<CityInfoContext>(
 // Microsoft.AspNetCore.Server.Kestrel.Core.BadHttpRequestException: Detected a TLS handshake to an endpoint that does not have TLS enabled.
 // Kestrel'in HTTPS'i desteklememesi için bu kodu ekledik.
 
+builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+
 builder.WebHost.ConfigureKestrel(options =>
 {
     options.ListenAnyIP(7101); // HTTP
