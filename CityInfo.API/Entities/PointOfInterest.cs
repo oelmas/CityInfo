@@ -15,7 +15,7 @@ namespace CityInfo.API.Entities
         public string? Description { get; set; }
 
         [ForeignKey("CityId")]
-        public City? City { get; set; }
+        public City? City { get; set; } // Navigation property
 
         public int CityId { get; set; }
 

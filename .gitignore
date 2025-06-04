@@ -74,3 +74,5 @@ _ReSharper*/
 /packages/
 riderModule.iml
 CityInfo.API/logs/
+CityInfo.API/CityInfo.db
+CityInfo.API/Migrations/
