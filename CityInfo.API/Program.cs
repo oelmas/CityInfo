@@ -3,6 +3,7 @@ using CityInfo.API.DbContexts;
 using CityInfo.API.Services;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using AutoMapper;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Debug()
@@ -46,11 +47,12 @@ builder.Services.AddDbContext<CityInfoContext>(
 // Kestrel'in HTTPS'i desteklememesi için bu kodu ekledik.
 
 builder.Services.AddScoped<ICityInfoRepository, CityInfoRepository>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenAnyIP(7101); // HTTP
-    options.ListenAnyIP(7100, listenOptions => listenOptions.UseHttps()); // HTTPS
+    options.ListenAnyIP(9200); // HTTP
+    options.ListenAnyIP(9201, listenOptions => listenOptions.UseHttps()); // HTTPS
 });
 
 var app = builder.Build();
