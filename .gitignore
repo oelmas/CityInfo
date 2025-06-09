@@ -76,3 +76,5 @@ riderModule.iml
 CityInfo.API/logs/
 CityInfo.API/CityInfo.db
 CityInfo.API/Migrations/
+CityInfo.API/CityInfo.db-shm
+CityInfo.API/CityInfo.db-wal

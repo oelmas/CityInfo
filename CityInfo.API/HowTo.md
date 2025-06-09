@@ -125,3 +125,37 @@ var cities = GetCities().Where(c => c.Name.Contains("New")); // Filtering happen
   - Need to filter, sort, or page data
   - Want to optimize performance for large datasets
   - Need to compose dynamic queries
+
+
+## Cursor IDE - C# Projelerinde Methodlara Hızlı Erişim Kısayolları
+
+Aşağıdaki kısayollar sayesinde büyük C# projelerinde methodlar arasında çok hızlı gezinebilir ve ihtiyacınız olan method'u kolayca bulabilirsiniz.
+
+### Method Arama ve Gezinme:
+
+*   `Ctrl + Shift + O`: Dosyadaki tüm sembolleri (methodlar, sınıflar, özellikler) listeler.
+*   `Ctrl + T`: Tüm projede sembol arama (Go to Symbol in Workspace).
+*   `Ctrl + P`: Dosya adıyla arama, sonra `@` yazarak o dosyadaki methodları görebilirsiniz.
+*   `Ctrl + Shift + .`: Breadcrumb navigation ile mevcut dosyadaki methodlar arası gezinme.
+
+### IntelliSense ve Otomatik Tamamlama:
+
+*   `Ctrl + Space`: IntelliSense'i manuel olarak tetikler.
+*   `Ctrl + Shift + Space`: Parameter hints gösterir.
+*   `Ctrl + .`: Quick actions ve refactoring seçenekleri.
+
+### Method Tanımına Gitme:
+
+*   `F12`: Method tanımına git (Go to Definition).
+*   `Ctrl + F12`: Method implementasyonuna git.
+*   `Alt + F12`: Peek Definition (method tanımını popup'ta gösterir).
+
+### Referansları Bulma:
+
+*   `Shift + F12`: Method referanslarını bul.
+*   `Alt + Shift + F12`: Peek References.
+
+### Fuzzy Search İpuçları:
+
+*   Method adının bir kısmını yazdığınızda IntelliSense otomatik filtreleme yapar.
+*   CamelCase kısaltmaları kullanabilirsiniz (örn: "GetUserData" için "gud" yazabilirsiniz).
